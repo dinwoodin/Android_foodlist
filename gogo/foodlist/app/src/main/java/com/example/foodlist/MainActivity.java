@@ -1,6 +1,8 @@
 package com.example.foodlist;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     SQLiteOpenHelper helper;
     SQLiteDatabase db;
     Cursor cursor;
-
+    FoodVO vo=new FoodVO();
+    ImageView keep;
 
     //메인 content에 띄울 화면 생성
     Fragment foodListFragment=new FoodListFragment();
@@ -46,12 +50,14 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout=findViewById(R.id.drawerLayout);
         main_drawer=findViewById(R.id.main_drawer);
 
+
         transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.main_content,foodListFragment).commit();
         //데이터베이스 생성
 //        helper=new FoodDB(this);
 //        db=helper.getReadableDatabase();
 
+        keep=findViewById(R.id.keep);
 
         getSupportActionBar().setTitle("맛집리스트");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_mama);
@@ -82,7 +88,11 @@ public class MainActivity extends AppCompatActivity {
                         getSupportActionBar().setTitle("맛집 즐겨찾기");
                         drawerLayout.closeDrawer(main_drawer);
                       break;
-
+                    case R.id.nav_register:
+                        intent=new Intent(MainActivity.this,RegisterActivity.class);
+                        startActivityForResult(intent,200);
+//                        startActivity(intent);
+                        break;
                 }
                 drawerLayout.closeDrawer(main_drawer);
                 return false;
@@ -101,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
                     drawerLayout.openDrawer(main_drawer);
                 }
                 break;
-
         }
         return super.onOptionsItemSelected(item);
+
     }
 
     @Override
@@ -118,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
             CircleImageView icon=findViewById(R.id.profile_icon);
             icon.setImageBitmap(BitmapFactory.decodeFile(strImage));
         }
+        transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_content,foodListFragment).commit();
     }
     public void mClick(View v){
         switch (v.getId()){
@@ -130,6 +142,22 @@ public class MainActivity extends AppCompatActivity {
                 intent=new Intent(MainActivity.this,ProfileActivity.class);
                 startActivity(intent);
                 drawerLayout.closeDrawer(main_drawer);
+                break;
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case 100:
+                foodKeepFragment=new FoodKeepFragment();
+                transaction=getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_content, foodKeepFragment).commit();
+                break;
+            case 200:
+                foodListFragment=new FoodListFragment();
+                transaction=getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_content, foodListFragment).commit();
                 break;
         }
     }

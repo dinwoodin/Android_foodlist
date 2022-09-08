@@ -4,14 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_list.xml" value="0.108" />
+        <entry key="app/src/main/res/layout/activity_food_info.xml" value="0.2601851851851852" />
         <entry key="app/src/main/res/layout/activity_index.xml" value="0.4817708333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20092592592592592" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.40520833333333334" />
         <entry key="app/src/main/res/layout/activity_permission.xml" value="0.4817708333333333" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.275" />
         <entry key="app/src/main/res/layout/activity_profile_icon.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.49583333333333335" />
         <entry key="app/src/main/res/layout/fragment_food_keep.xml" value="0.41302083333333334" />
         <entry key="app/src/main/res/layout/fragment_food_list.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/fragment_food_map.xml" value="0.41302083333333334" />
+        <entry key="app/src/main/res/layout/fragment_register_image.xml" value="0.2759259259259259" />
+        <entry key="app/src/main/res/layout/fragment_register_input.xml" value="0.2759259259259259" />
+        <entry key="app/src/main/res/layout/fragment_register_location.xml" value="0.49583333333333335" />
         <entry key="app/src/main/res/layout/item_food.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/main_drawer.xml" value="0.26296296296296295" />
         <entry key="app/src/main/res/menu/main.xml" value="0.49583333333333335" />

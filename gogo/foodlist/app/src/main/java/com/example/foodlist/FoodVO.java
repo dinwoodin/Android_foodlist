@@ -1,6 +1,8 @@
 package com.example.foodlist;
 
-public class FoodVO {
+import java.io.Serializable;
+
+public class FoodVO implements Serializable {
     private int id;
     private String name;
     private String tel;
